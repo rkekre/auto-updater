@@ -1,0 +1,14 @@
+# copy to --> /etc/systemd/system/dummy.service
+
+[Unit]
+Description=Foo Service
+After=network.target foo.socket
+Requires=foo.socket
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /opt/foo/serve.py
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
