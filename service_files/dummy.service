@@ -1,13 +1,13 @@
 # copy to --> /etc/systemd/system/dummy.service
 
 [Unit]
-Description=Foo Service
-After=network.target foo.socket
-Requires=foo.socket
+Description=Dummy Service
+After=network.target dummy.socket
+Requires=dummy.socket
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python /opt/foo/serve.py
+ExecStart=/home/opc/auto-updater/serve.py
 TimeoutStopSec=5
 
 [Install]
