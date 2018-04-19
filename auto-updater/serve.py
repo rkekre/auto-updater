@@ -10,7 +10,7 @@ class Handler(StreamRequestHandler):
     def handle(self):
         self.data = self.rfile.readline().strip()
         logging.info("From <%s>: %s" % (self.client_address, self.data))
-        self.wfile.write("Message: " + self.data.upper() + "\tCurrent Time: " + datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")  + "\n")
+        self.wfile.write("Message: " + self.data.upper() + "\nCurrent Time: " + datetime.datetime.now().strftime("%H:%M:%S")  + "\nCurrent Date: " + datetime.datetime.now().strftime("%d:%m:%Y") + "\n")
 
 class Server(TCPServer):
     
@@ -25,7 +25,7 @@ class Server(TCPServer):
         self.socket = socket.fromfd(
             self.SYSTEMD_FIRST_SOCKET_FD, self.address_family, self.socket_type)
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     logging.basicConfig(level=logging.INFO)
     HOST, PORT = "localhost", 9999 # not really needed here
     server = Server((HOST, PORT), Handler)
