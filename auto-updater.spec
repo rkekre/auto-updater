@@ -1,4 +1,4 @@
-%define name simple-auto-updater
+%define name auto-updater
 %define version %{_version}
 %define release %{_release}
 %define file_permissions_group root
@@ -40,7 +40,7 @@ pip install --no-index --find-links=%{tmp_dir} auto-updater==%{version}.%{releas
 %{__mkdir} -p %{build_deps_dir}
 
 # Downloads dependencies wheels package and put them into the target dependencies directory
-pip install -d %{build_deps_dir} -r rpm_requirements.txt
+pip install -d %{build_deps_dir} -r requirements.txt
 
 # Copy the wheel package to the target build directory
 %{__cp} %{_builddir}/*.whl %{build_dir}
