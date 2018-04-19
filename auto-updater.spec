@@ -50,6 +50,7 @@ pip install -d %{build_deps_dir} -r requirements.txt
 
 # Move everything over to a tmp dir
 ln -sf %{tmp_dir} %{build_dir}
+echo "%{build_dir}/auto-updater/run.sh"
 
 %clean
 rm -rf %{buildroot}
@@ -57,3 +58,4 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %{tmp_dir}
+

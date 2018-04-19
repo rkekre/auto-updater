@@ -1,0 +1,14 @@
+MANIFEST.in
+requirements.txt
+setup.cfg
+setup.py
+auto-updater/run.sh
+auto-updater/serve.py
+auto-updater/time-now.py
+auto-updater/service_files/dummy.service
+auto-updater/service_files/dummy.socket
+auto_updater.egg-info/PKG-INFO
+auto_updater.egg-info/SOURCES.txt
+auto_updater.egg-info/dependency_links.txt
+auto_updater.egg-info/pbr.json
+auto_updater.egg-info/top_level.txt
