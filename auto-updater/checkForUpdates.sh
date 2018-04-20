@@ -32,6 +32,10 @@ if [ "$current_version" != "$required_version" ]; then
     sudo yum -y install ${required_version}
     cd ${CWD}
     rm -rf ${BINARY_DIR}
+
+    sudo rsync -rtvuc /tmp/auto-updater/src /tmp/dummy_service
+    sudo systemctl daemon-reload 
+    sudo systemctl restart dummy
 else
     echo "No update required."
 fi 

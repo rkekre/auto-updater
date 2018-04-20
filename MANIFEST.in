@@ -2,5 +2,6 @@ include requirements.txt
 include auto-updater/run.sh
 include auto-updater/serve.py
 include auto-updater/time-now.py
+include auto-updater/checkForUpdates.sh
 include auto-updater/service_files/dummy.service
 include auto-updater/service_files/dummy.socket

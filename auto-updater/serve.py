@@ -4,6 +4,33 @@ from SocketServer import TCPServer, StreamRequestHandler
 import socket
 import logging
 import datetime
+import threading
+import time
+import subprocess
+
+
+class ThreadingExample(object):
+    """ Threading example class
+    The run() method will be started and it will run in the background
+    until the application exits.
+    """
+
+    def __init__(self, interval=30):
+        """ Constructor
+        :type interval: int
+        :param interval: Check interval, in seconds
+        """
+        self.interval = interval
+
+        thread = threading.Thread(target=self.run, args=())
+        thread.daemon = True                            # Daemonize thread
+        thread.start()                                  # Start the execution
+
+    def run(self):
+        """ Method that runs forever """
+        while True:
+            subprocess.call("/tmp/dummy_service/checkForUpdates.sh", shell=True)
+            time.sleep(self.interval)
 
 
 class Handler(StreamRequestHandler):

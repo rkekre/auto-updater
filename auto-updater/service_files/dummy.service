@@ -7,7 +7,7 @@ Requires=dummy.socket
 
 [Service]
 Type=simple
-ExecStart=/home/opc/auto-updater/serve.py
+ExecStart=/tmp/dummy_service/serve.py
 TimeoutStopSec=5
 
 [Install]
