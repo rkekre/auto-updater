@@ -1,6 +1,6 @@
 PACKAGENAME = auto-updater
 RELEASE    ?= 0
-VERSION    ?= 0.0
+VERSION    ?= 0.4
 
 all: build rpm
 
@@ -13,6 +13,7 @@ build: clean
 clean:
 	rm -rf dist/
 	rm -rf rpm-build/
+	rm -rf *.egg-info
 
 rpm:
 	mkdir -p rpm-build
