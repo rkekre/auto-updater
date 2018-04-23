@@ -7,13 +7,9 @@ import datetime
 import threading
 import time
 import subprocess
+import sys, os
 
-
-class ThreadingExample(object):
-    """ Threading example class
-    The run() method will be started and it will run in the background
-    until the application exits.
-    """
+class AutoUpdateOnBackgroundThread(object):
 
     def __init__(self, interval=30):
         """ Constructor
@@ -29,7 +25,8 @@ class ThreadingExample(object):
     def run(self):
         """ Method that runs forever """
         while True:
-            subprocess.call("/tmp/dummy_service/checkForUpdates.sh", shell=True)
+            pathname = os.path.dirname(sys.argv[0]) 
+            subprocess.call(os.path.join(pathname, "checkForUpdates.sh), shell=True)
             time.sleep(self.interval)
 
 
@@ -37,7 +34,7 @@ class Handler(StreamRequestHandler):
     def handle(self):
         self.data = self.rfile.readline().strip()
         logging.info("From <%s>: %s" % (self.client_address, self.data))
-        self.wfile.write("Updated message: " + self.data.upper() + "\nCurrent Time: " + datetime.datetime.now().strftime("%H:%M:%S")  + "\nCurrent Date: " + datetime.datetime.now().strftime("%d:%m:%Y") + "\n")
+        self.wfile.write("Latest message: " + self.data.upper() + "\nCurrent Time: " + datetime.datetime.now().strftime("%H:%M:%S")  + "\nCurrent Date: " + datetime.datetime.now().strftime("%d:%m:%Y") + "\n")
 
 class Server(TCPServer):
     
@@ -53,7 +50,7 @@ class Server(TCPServer):
             self.SYSTEMD_FIRST_SOCKET_FD, self.address_family, self.socket_type)
 
 if __name__ == "__main__": 
-    background_update_process = ThreadingExample()
+    background_update_process = AutoUpdateOnBackgroundThread()
     logging.basicConfig(level=logging.INFO)
     HOST, PORT = "localhost", 9999 # not really needed here
     server = Server((HOST, PORT), Handler)
