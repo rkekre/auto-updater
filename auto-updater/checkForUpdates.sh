@@ -15,7 +15,6 @@ required_version=`cat required_version.txt`
 cd ${CWD}
 
 current_version=`rpm -qa | grep auto-updater`
-current_version+=".rpm"
 if [[ -z "${current_version// }" ]]; then 
     current_version="null"
 fi
@@ -29,7 +28,7 @@ if [ "$current_version" != "$required_version" ]; then
         sudo yum -y erase ${current_version}
     fi
     git checkout HEAD ${required_version}
-    sudo yum -y install ${required_version}
+    sudo yum -y install ${required_version}".rpm"
     cd ${CWD}
     rm -rf ${BINARY_DIR}
 
