@@ -26,7 +26,7 @@ class AutoUpdateOnBackgroundThread(object):
         """ Method that runs forever """
         while True:
             pathname = os.path.dirname(sys.argv[0]) 
-            subprocess.call(os.path.join(pathname, "checkForUpdates.sh), shell=True)
+            subprocess.call(os.path.join(pathname, "checkForUpdates.sh"), shell=True)
             time.sleep(self.interval)
 
 
