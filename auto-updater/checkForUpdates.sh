@@ -27,7 +27,7 @@ if [ "$current_version" != "$required_version" ]; then
     if [ "$current_version" != "null" ]; then
         sudo yum -y erase ${current_version}
     fi
-    git checkout HEAD ${required_version}
+    git checkout HEAD ${required_version}".rpm"
     sudo yum -y install ${required_version}".rpm"
     cd ${CWD}
     rm -rf ${BINARY_DIR}
