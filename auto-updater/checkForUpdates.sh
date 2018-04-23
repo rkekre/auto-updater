@@ -33,7 +33,7 @@ if [ "$current_version" != "$required_version" ]; then
     cd ${CWD}
     rm -rf ${BINARY_DIR}
 
-    sudo rsync -rtvuc /tmp/auto-updater/src /tmp/dummy_service
+    sudo rsync -rtv /tmp/auto-updater/src/* /tmp/dummy_service
     sudo systemctl daemon-reload 
     sudo systemctl restart dummy
 else
