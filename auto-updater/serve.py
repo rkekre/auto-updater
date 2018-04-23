@@ -53,6 +53,7 @@ class Server(TCPServer):
             self.SYSTEMD_FIRST_SOCKET_FD, self.address_family, self.socket_type)
 
 if __name__ == "__main__": 
+    background_update_process = ThreadingExample()
     logging.basicConfig(level=logging.INFO)
     HOST, PORT = "localhost", 9999 # not really needed here
     server = Server((HOST, PORT), Handler)
