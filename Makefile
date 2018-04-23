@@ -1,6 +1,6 @@
 PACKAGENAME = auto-updater
 RELEASE    ?= 0
-VERSION    ?= 0.4
+VERSION    ?= 0.6
 
 all: build rpm
 

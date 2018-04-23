@@ -23,6 +23,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Prefix: %{_prefix}
 BuildArch: noarch
 Vendor: John Doe Vendor
+Requires: python-pip
 Requires: openssl-devel
 
 %description

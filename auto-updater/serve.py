@@ -37,7 +37,7 @@ class Handler(StreamRequestHandler):
     def handle(self):
         self.data = self.rfile.readline().strip()
         logging.info("From <%s>: %s" % (self.client_address, self.data))
-        self.wfile.write("Message: " + self.data.upper() + "\nCurrent Time: " + datetime.datetime.now().strftime("%H:%M:%S")  + "\nCurrent Date: " + datetime.datetime.now().strftime("%d:%m:%Y") + "\n")
+        self.wfile.write("Updated message: " + self.data.upper() + "\nCurrent Time: " + datetime.datetime.now().strftime("%H:%M:%S")  + "\nCurrent Date: " + datetime.datetime.now().strftime("%d:%m:%Y") + "\n")
 
 class Server(TCPServer):
     
